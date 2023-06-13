@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.uaspab" >
+    package="com.example.uaspab">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -25,12 +25,12 @@
         android:label="Aplikasi Absensi Perkuliahan"
         android:supportsRtl="true"
         android:theme="@style/Theme.Uaspab"
-        tools:targetApi="31" >
+        tools:targetApi="31">
         <activity
-            android:name=".AbsensiActivity"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".HistoryActivity"
+            android:name=".AbsensiActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
@@ -40,7 +40,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
