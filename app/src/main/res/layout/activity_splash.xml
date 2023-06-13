@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#673AB7"
+    android:background="#00BCD4"
 
     tools:context=".SplashActivity">
 
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:src="@drawable/logoumdp"
+        android:src="@drawable/school"
         app:layout_constraintDimensionRatio="H,2:1"
         android:layout_marginHorizontal="0dp"
         app:tint="@color/white"
