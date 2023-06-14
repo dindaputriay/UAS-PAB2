@@ -83,6 +83,15 @@
             android:layout_marginTop="12dp"
             android:background="@color/teal_200"
             android:text="Masuk"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvRegister"
+            android:text="Anda Belum Terdaftar ? silahkan daftar disini"
+            />
     </LinearLayout>
 
     <ProgressBar

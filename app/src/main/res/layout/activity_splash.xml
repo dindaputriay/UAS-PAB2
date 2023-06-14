@@ -19,7 +19,6 @@
         android:src="@drawable/school"
         app:layout_constraintDimensionRatio="H,2:1"
         android:layout_marginHorizontal="0dp"
-        app:tint="@color/white"
 
         />
 

@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         });
-        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
+        binding.tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
@@ -59,38 +59,21 @@ public class LoginActivity extends AppCompatActivity {
         binding.progressBar.setVisibility(View.VISIBLE);
         //memanggil API LOGIN
         APIService apilogin = Utility.getRetrofit().create(APIService.class);
-        Call<ValueNoData> call = apilogin.login("dirumahaja",username,password);
-        call.enqueue(new Callback<ValueNoData>() {
+        apilogin.login(username, password).enqueue(new Callback<ValueData<Dinda>>() {
             @Override
-            public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {
-                if (response.code()==200){
-                    int success = response.body().getSuccess();
-                    String message = response.body().getMessage();
-
-                    if (success == 1){
-                        Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
-                        Utility.setValue(LoginActivity.this,"xUsername",username);
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }else{
-                        Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
-                    }
-                }else{
-                    Toast.makeText(LoginActivity.this, "Response "+ response.code(), Toast.LENGTH_SHORT).show();
-                }
+            public void onResponse(Call<ValueData<Dinda>> call, Response<ValueData<Dinda>> response) {
+                binding.progressBar.setVisibility(View.GONE);
+                String id = response.body().getData().getId();
+                Utility.setValue(LoginActivity.this, "xUserId", id);
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                finish();
             }
 
             @Override
-            public void onFailure(Call<ValueNoData> call, Throwable t) {
-                binding.progressBar.setVisibility(View.GONE);
-                System.out.println("Retrofit Error : "+ t.getMessage());
-                Toast.makeText(LoginActivity.this, "Retrofit error : "+ t.getMessage(), Toast.LENGTH_SHORT).show();
-
+            public void onFailure(Call<ValueData<Dinda>> call, Throwable t) {
 
             }
         });
-
-
+        
     }
 }

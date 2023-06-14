@@ -25,7 +25,7 @@
                 android:id="@+id/tv_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Username"
+                android:text="nama"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -33,7 +33,7 @@
                 android:id="@+id/tv_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Content"
+                android:text="Lokasi"
                 android:layout_below="@+id/tv_username"
                 android:textSize="15sp"
                 android:layout_marginTop="2dp"/>
@@ -46,6 +46,15 @@
                 android:layout_below="@+id/tv_content"
                 android:textAlignment="textEnd"
                 android:layout_marginTop="2dp"/>
+
+            <TextView
+                android:id="@+id/tv_keterangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Keterangan"
+                android:layout_below="@+id/tv_created_date"
+                android:textAlignment="textEnd"
+                android:layout_marginTop="4dp"/>
 
         </RelativeLayout>
 

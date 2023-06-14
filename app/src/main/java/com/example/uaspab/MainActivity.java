@@ -21,12 +21,28 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if(!Utility.checkValue(this,"xUsername")){
+        if(!Utility.checkValue(this,"xUserId")){
             Intent intent = new Intent(this,LoginActivity.class);
             startActivity(intent);
             finish();
-
         }
+
+        binding.imageLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utility.clearUser(MainActivity.this);
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
+            }
+        });  
+
+
+    binding.btnAbsenMasuk.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(MainActivity.this, AbsensiActivity.class));
+        }
+    });
     }
 
 }

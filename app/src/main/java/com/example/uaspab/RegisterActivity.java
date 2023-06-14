@@ -70,37 +70,16 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
     private void register(String username, String password) {
-        binding.progressBar.setVisibility(View.VISIBLE);
-        //memanggil API Register
-        APIService apiregister = Utility.getRetrofit().create(APIService.class);
-        Call<ValueNoData> call = apiregister.register("dirumahaja",username,password);
-        call.enqueue(new Callback<ValueNoData>() {
+        APIService apiRegister = Utility.getRetrofit().create(APIService.class);
+        apiRegister.register(username, password).enqueue(new Callback<ValueData<Dinda>>() {
             @Override
-            public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {
-                binding.progressBar.setVisibility(View.GONE);
-                if (response.code()==200){
-                    int success = response.body().getSuccess();
-                    String message = response.body().getMessage();
-                    if (success ==1 ){
-                        Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
-                        Utility.setValue(RegisterActivity.this,"xUsername",username);
-                        Intent intent= new Intent(RegisterActivity.this,MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }else{
-                        Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
-                    }
-                }else {
-                    Toast.makeText(RegisterActivity.this, "Response = "+response.code(), Toast.LENGTH_SHORT).show();
-                }
-
+            public void onResponse(Call<ValueData<Dinda>> call, Response<ValueData<Dinda>> response) {
+                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                finish();
             }
 
             @Override
-            public void onFailure(Call<ValueNoData> call, Throwable t) {
-                binding.progressBar.setVisibility(View.GONE);
-                System.out.println("Retrofit Error : "+ t.getMessage());
-                Toast.makeText(RegisterActivity.this, "Retrofit Error : "+ t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<ValueData<Dinda>> call, Throwable t) {
 
             }
         });
